@@ -46,3 +46,17 @@ g++ src/lcd_camera_detect_demo.cpp \
 echo
 echo "Build finished."
 ls -lh build/
+
+echo "Building lcd_camera_detect_threaded..."
+g++ src/lcd_camera_detect_threaded.cpp \
+  -o build/lcd_camera_detect_threaded \
+  -Ithird_party/rknn/include \
+  -Lthird_party/rknn/lib \
+  -lrknnrt \
+  $(pkg-config --cflags --libs opencv) \
+  -std=c++11 \
+  -pthread
+
+echo
+echo "Threaded executable:"
+ls -lh build/lcd_camera_detect_threaded
